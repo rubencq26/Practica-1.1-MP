@@ -23,7 +23,7 @@ public:
     // Getters
     int getDni() const { return dni; }
     const char* getNombre() const { return nombre; }
-    Fecha getFecha() const { return fechaAlta; }
+    Fecha getFecha() const;
 
     // Setters
     void setNombre(const char* name);

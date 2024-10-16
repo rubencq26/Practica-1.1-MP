@@ -44,6 +44,13 @@ Cliente& Cliente::operator=(const Cliente& c) {
 
 // Sobrecarga del operador de inserción para imprimir la información del cliente
 std::ostream& operator<<(std::ostream& os, const Cliente& c) {
-    os << "DNI: " << c.dni << " - Nombre: " << c.nombre << " - Fecha de alta: " << c.fechaAlta;
+    const char* meses[] = { "ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic" };
+    os << c.getNombre() << " (" << c.getDni() << " - " << (c.getFecha().getDia() < 10 ? "0" : "") << c.getFecha().getDia() << " " << meses[c.getFecha().getMes() - 1] << " " << c.getFecha().getAnio();
     return os;
+}
+
+
+
+Fecha Cliente::getFecha() const {
+    return fechaAlta; // Devuelve el objeto Fecha en lugar de una cadena de caracteres
 }
