@@ -28,7 +28,7 @@ int main() {
     f1.setFecha(7, 10, 2015);
 
     Cliente c(75547999, "Juan Sin Miedo", Fecha(29, 2, 2000));
-
+    
     const Cliente j(44228547, "Luis", f1);
 
     c.setNombre("Juan Palomo");

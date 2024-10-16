@@ -2,8 +2,26 @@
 
 // Constructor con parámetros
 Fecha::Fecha(const int day, const int month, const int year) {
-    dia = day;
-    mes = month;
+    int diasEnMes[] = { 31, (bisiesto() ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    if (month > 0 && month < 13) {
+        mes = month;
+    }
+    else if (month < 1) {
+        mes = 1;
+    }
+    else {
+        mes = 12;
+    }
+
+    if (day > 0 && day < diasEnMes[mes - 1] + 1) {
+        dia = day;
+    }
+    else if (day < 1) {
+        dia = 1;
+    }
+    else {
+        dia = diasEnMes[mes - 1];
+    }
     anio = year;
 }
 
@@ -16,7 +34,9 @@ Fecha::Fecha() {
 
 // Método para mostrar la fecha
 void Fecha::ver() const {
-    cout << dia << "/" << mes << "/" << anio;
+    
+    cout << (dia < 10 ? "0" : "")<<dia << "/"<<(mes <10 ? "0" : "") << mes << "/" << anio;
+    //Asi se añade un 0 delante para que siempre tenga el fomato DD/MM/YYYY
 }
 
 // Método para comprobar si el año es bisiesto
@@ -31,8 +51,26 @@ bool Fecha::bisiesto() const {
 
 // Método para establecer la fecha
 void Fecha::setFecha(const int day, const int month, const int year) {
-    dia = day;
-    mes = month;
+    int diasEnMes[] = { 31, (bisiesto() ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    if (month > 0 && month < 13) {
+        mes = month;
+    }
+    else if(month < 1){
+        mes = 1;
+    }
+    else {
+        mes = 12;
+    }
+
+    if (day > 0 && day < diasEnMes[mes -1]+1) {
+        dia = day;
+    }
+    else if (day < 1) {
+        dia = 1;
+    }
+    else {
+        dia = diasEnMes[mes - 1];
+    }
     anio = year;
 }
 
@@ -69,7 +107,7 @@ Fecha Fecha::operator++(int) {
     return temp;        // Devuelve la fecha original (estado anterior)
 }
 
-// Sobrecarga global del operador + para Fecha + int
+// Sobrecarga global del operador + para Fecha +  int
 const Fecha operator+(const Fecha& f, int dias) {
     Fecha result = f;
     for (int i = 0; i < dias; ++i) {
