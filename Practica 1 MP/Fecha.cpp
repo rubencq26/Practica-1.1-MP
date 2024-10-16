@@ -69,7 +69,7 @@ Fecha Fecha::operator++(int) {
     return temp;        // Devuelve la fecha original (estado anterior)
 }
 
-// Sobrecarga global del operador + para Fecha + int
+// Sobrecarga global del operador + para Fecha +  int
 const Fecha operator+(const Fecha& f, int dias) {
     Fecha result = f;
     for (int i = 0; i < dias; ++i) {
